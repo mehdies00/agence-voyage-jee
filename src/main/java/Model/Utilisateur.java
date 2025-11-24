@@ -1,29 +1,49 @@
 package Model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Utilisateur {
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
     private int id;
-    private String username;
+	@Column(name = "name")
     private String name;
+	
+	@Column(name = "email")
     private String email;
+	
+	@Column(name = "password")
     private String password;
+	
+	@Column(name = "phoneNumber")
     private String phoneNumber ;
+	
+	@Column(name = "gender")
     private String gender ;
-
+	
     
     public Utilisateur() {}
 
     
-
-    public Utilisateur(int id,String username, String name, String email, String password, String phoneNumber,String gender) {
+    public Utilisateur(int id, String name, String email, String password, String phoneNumber,String gender) {
 		this.id = id;
-		this.username= username;
 		this.name= name;
 		this.email = email;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
-		this.gender = gender ;
-		
+		this.gender = gender ;	
+	}
+    public Utilisateur(String name, String email, String password, String phoneNumber,String gender) {
+		this.name= name;
+		this.email = email;
+		this.password = password;
+		this.phoneNumber = phoneNumber;
+		this.gender = gender ;	
 	}
 
 
@@ -31,10 +51,6 @@ public class Utilisateur {
 	public int getId() {return id;}
 	public void setId(int id) {this.id = id;}
 		
-	
-	public String getUsername() {return username;}
-	public void setUsername(String username) {this.username = username;}
-
 		
 	public String getName() {return name;}
 	public void setName(String name) {this.name = name;	}

@@ -13,13 +13,10 @@
                     <input type="text" name="username" class="form-control" placeholder="Username" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="full name" class="form-control" placeholder="Full name" required>
-                </div>
-                <div class="form-group">
                     <input type="email" name="email" class="form-control" placeholder="E-mail" required>
                 </div>
                 <div class="form-group">
-                    <input type="tel" name="phone number" class="form-control" placeholder="Phone number" pattern="[0-9]{10}" 
+                    <input type="tel" name="phonenumber" class="form-control" placeholder="Phone number" pattern="[0-9]{10}" 
                     title="10 digits only, no spaces or dashes" required>
                 </div>
                     <fieldset>
