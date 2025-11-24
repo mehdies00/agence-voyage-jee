@@ -1,5 +1,46 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<body>
-<h2><%= "Hello World!" %></h2>
+<head>
+    <title>Connexion - Voyage App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body class="bg-red-custom"> <div class="container d-flex justify-content-center align-items-center vh-100">
+       
+
+            <form action="UserRegSeverlet" method="post">
+                <div class="form-group">
+                    <input type="text" name="username" class="form-control" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="full name" class="form-control" placeholder="Full name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone number" class="form-control" placeholder="Phone number" pattern="[0-9]{10}" 
+                    title="10 digits only, no spaces or dashes" required>
+                </div>
+                    <fieldset>
+                        <legend>Gender :</legend>
+                        <div>
+                         <input type="radio" id="Male" name="genre" value="M" required>
+                         <label for="Male">Male</label>
+                        </div>
+                        <div>
+                          <input type="radio" id="female" name="genre" value="F">
+                          <label for="female">Female</label>
+                        </div>
+                    </fieldset>
+                <div class="form-group">
+                    <input type="password" name="pass" class="form-control" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-block btn-light">Create account</button>
+            </form>
+            
+            <hr class="bg-white">
+        </div>
+    </div>
 </body>
 </html>
