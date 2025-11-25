@@ -1,13 +1,10 @@
 package controller;
 
 import java.io.IOException;
-
-import org.eclipse.model.Personne;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import Model.Utilisateur;
+import Model.Client;     
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -26,8 +23,7 @@ public class UserRegSeverlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//getServletContext().getRequestDispatcher("/include/html/form.html").include(request, response);
 	}
 
 	
@@ -38,7 +34,7 @@ public class UserRegSeverlet extends HttpServlet {
 		String phone=request.getParameter("phonenumber");
 		String gender=request.getParameter("genre");
 		String pwd=request.getParameter("pass");
-		Utilisateur user = new Utilisateur(username,email,pwd,phone,gender);
+		Client user = new Client(username,email,pwd,phone,gender);
     	Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
     	SessionFactory  sessionFactory = configuration.buildSessionFactory();
     	Session	session = sessionFactory.openSession();
@@ -47,12 +43,7 @@ public class UserRegSeverlet extends HttpServlet {
     	session.getTransaction().commit();
     	session.close();
     	sessionFactory.close();
-		System.out.println(user.getId());
-		response.setContentType("text/html;charset=UTF-8");
-		response.getWriter().println("<h1>Confirmation d'inscription</h1>");
-		
-		response.getWriter().println("<p>Nom d'utilisateur reçu : <strong>" + username + "</strong></p>");
-		
+		getServletContext().getRequestDispatcher("/include/html/login.html").include(request, response);
 	}
 
 }

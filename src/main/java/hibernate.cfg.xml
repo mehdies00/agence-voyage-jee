@@ -21,7 +21,7 @@
         <property name="hibernate.format_sql">true</property>
       	<property name="hibernate.allow_update_outside_transaction">true</property>
         <!-- Mapping classes -->
-        <mapping class="Model.Utilisateur"/>
+        <mapping class="Model.Client"/>
    
     </session-factory>
 </hibernate-configuration>
