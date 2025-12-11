@@ -1,42 +1,55 @@
 <html>
 <head>
     <title>Connexion - Voyage App</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css"> 
+    <link rel="stylesheet" href="../css/form.css"> 
+    <link rel="stylesheet" href="../css/VarStyle.css"> 
 </head>
-<body class="bg-red-custom"> <div class="container d-flex justify-content-center align-items-center vh-100">
-       
-
-            <form action="/agence-de-voyage/UserRegSeverlet" method="post">
-                <div class="form-group">
-                    <input type="text" name="username" class="form-control" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="E-mail" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" name="phonenumber" class="form-control" placeholder="Phone number" pattern="[0-9]{10}" 
-                    title="10 digits only, no spaces or dashes" required>
-                </div>
-                    <fieldset>
-                        <legend>Gender :</legend>
-                        <div>
-                         <input type="radio" id="Male" name="genre" value="M" required>
-                         <label for="Male">Male</label>
-                        </div>
-                        <div>
-                          <input type="radio" id="female" name="genre" value="F">
-                          <label for="female">Female</label>
-                        </div>
-                    </fieldset>
-                <div class="form-group">
-                    <input type="password" name="pass" class="form-control" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn btn-block btn-light">Create account</button>
-            </form>
-            
-            <hr class="bg-white">
-        </div>
-    </div>
+  
+<body>
+	<header></header>
+	
+	
+	<div class="formContainer">
+		<div class="LoginLinkSection">
+		<h2>Already have an account ?</h2>
+		<a href="login.html">Login</a>
+		</div>
+			<form action="/agence-de-voyage/UserRegSeverlet" method="post" class="LoginForm">
+				
+				<div class="inputStyle">
+					<label for="name">name</label>
+					<input id="name" type="text" placeholder="name">
+				</div>
+				
+				<div class="inputStyle">
+					<label for="email">E-mail</label>
+					<input  id="email" type="text" placeholder="email">
+				</div>
+				
+				<div class="inputStyle">
+					<label for="pwd">Password</label>
+					<input  id="pwd" type="password" placeholder="Password">
+				</div>
+				
+				<div class="inputStyle">
+					<label for="phone">Phone Number</label>
+					<input id="phone" type="text" placeholder="phone">
+				</div>
+						
+				
+				<div class="radioSection">
+				<label class="genderTitle">Gender</label>
+				<div  class="radioStyle">
+				<input id=male type="radio" name="genre" value=m>
+				<label for=male>Male</label>
+				</div>
+				<div  class="radioStyle">
+				<input id=female type="radio"  name="genre" value=f>
+				<label for="female">Female</label>
+				</div>
+				</div>
+				<Button> Create Account</Button>
+			</form>
+	</div>
 </body>
 </html>

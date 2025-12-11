@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     paris: {
       title: "France",
       description: "The capital of France, famous for the Eiffel Tower, the Louvre, and Notre-Dame.",
-      image: "./asset/EiffelParis.jpg",
+      image: "../asset/EiffelParis.jpg",
       capital: "Paris",
       population: "2.1 million",
       language: "French",
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     rome: {
       title: "Italie",
       description: "The Italian capital, known for the Colosseum, the Vatican, and the Trevi Fountain.",
-      image: "./asset/Rome.jpg",
+      image: "../asset/Rome.jpg",
       capital: "Rome",
       population: "2.8 million",
       language: "Italian",
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     korea: {
       title: "South Korea",
       description: "A modern country with ancient temples, rich cuisine, and the vibrant city of Seoul.",
-      image: "./asset/Tokyo.jpg",
+      image: "../asset/Tokyo.jpg",
       capital: "Seoul",
       population: "51 million",
       language: "Korean",
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mali: {
       title: "Mali",
       description: "A West African country famous for Timbuktu and the Niger River.",
-      image: "./asset/mali.jpg",
+      image: "../asset/mali.jpg",
       capital: "Bamako",
       population: "20 million",
       language: "French",
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     india: {
       title: "India",
       description: "A South Asian country known for the Taj Mahal, Rajasthan, and its cultural diversity.",
-      image: "./asset/india.jpg",
+      image: "../asset/india.jpg",
       capital: "New Delhi",
       population: "1.4 billion",
       language: "Hindi, English",
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     london: {
       title: "London",
       description: "The capital of the UK, famous for Big Ben, Tower Bridge, and Buckingham Palace.",
-      image: "./asset/London.jpg",
+      image: "../asset/London.jpg",
       capital: "London",
       population: "9 million",
       language: "English",
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dubai: {
       title: "Dubai",
       description: "A futuristic city in the UAE known for the Burj Khalifa and luxury shopping.",
-      image: "./asset/BurjKhalifa.jpg",
+      image: "../asset/BurjKhalifa.jpg",
       capital: "Dubai",
       population: "3.5 million",
       language: "Arabic",
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     morocco: {
       title: "Morocco",
       description: "A North African country famous for Marrakech, Casablanca, and the Atlas Mountains.",
-      image: "./asset/HassanTower.jpg",
+      image: "../asset/HassanTower.jpg",
       capital: "Rabat",
       population: "37 million",
       language: "Arabic, Amazigh",

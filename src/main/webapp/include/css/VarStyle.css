@@ -1,0 +1,74 @@
+:root{
+    /* ==== COLORS ==== */
+    --clr-body: #FFFCFB;
+    --clr-text: #212529;
+    --clr-gray-light: #EEEEEE;
+    --clr-gray-dark: #DEE2E6;
+
+    --clr-orange-main: rgb(247, 89, 64);
+    --clr-orange-dark: rgb(207, 75, 0);
+    --clr-orange-darker: rgb(150, 54, 0);
+    --clr-orange-focus: rgba(255, 221, 99, 0.964);
+    --clr-orange-light:#FFE6C9;
+    --clr-primary: #FF7F3F; /* Orange Principal */
+            --clr-secondary: #FFBF78; /* Orange Bas de Carte */
+            --clr-text-dark: #333;
+            --clr-text-light: #fff;
+            --clr-shadow: rgba(0, 0, 0, 0.15);
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+    --clr-text-muted: #6c757d;
+    --clr-text-soft: #495057;
+
+    --clr-popup-bg: rgba(0,0,0,0.6);
+    --clr-badge-blue: #71C9CE;
+
+    /* ==== TYPO ==== */
+    --font-main: "Source Sans Pro", "Segoe UI", Arial, sans-serif;
+    --font-size-base: 1.6rem;
+    --font-weight-bold: 700;
+
+    /* ==== SPACING ==== */
+    --space-xs: .5rem;
+    --space-sm: 1rem;
+    --space-md: 1.6rem;
+    --space-lg: 2rem;
+    --space-xl: 4rem;
+    --space-xxl: 10rem;
+
+    /* ==== RADIUS ==== */
+    --radius-sm: .8rem;
+    --radius-md: 1.6rem;
+    --radius-full: 5rem;
+
+    /* ==== SHADOW ==== */
+    --shadow-card: 0 4px 8px rgba(0,0,0,0.2);
+    --shadow-popup: 0 10px 30px rgba(0,0,0,0.25);
+
+    /* ==== TRANSITIONS ==== */
+    --transition-fast: .1s ease-out;
+    --transition-med: .3s ease-in-out;
+
+    /* ==== HEIGHT ==== */
+    --navbar-height: 6rem;
+    --search-height: 5.6rem;
+}
+
+
+/* GLOBAL */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { font-size: 62.5%; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-main);
+    background-color: var(--clr-body);
+    color: var(--clr-text);
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    min-height: 100vh;
+}

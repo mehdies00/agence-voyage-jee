@@ -1,0 +1,97 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+.formContainer{
+	display:flex;
+	flex-direction: column;
+	justify-content:center;
+	  align-items: start;
+}
+.LoginLinkSection{
+	display:flex;
+	justify-content:center;
+	  align-items: center;
+	 gap:1rem;
+}
+.LoginLinkSection h2{
+	font-size:2.8rem;
+}
+.LoginLinkSection a{
+color: var(--clr-text);
+font-size:1.8rem;
+}
+
+.LoginForm{
+
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    /*background-color: rgba(238, 238, 238,.8);*/
+
+    /* margin: 10rem; */
+
+
+}
+.inputStyle{
+    display: flex;
+    flex-direction: column;
+    margin:  1.4rem 0;
+    align-items: start;
+    font-size: var(--font-main);
+    
+}
+ .inputStyle label{
+    margin-bottom: 1rem;
+    cursor: pointer;
+
+
+
+}
+input[type="text"],input[type="password"]{
+    padding: 1.8rem;
+    border: 1px solid #4a5568;
+    border-radius: var(--radius-sm);
+     color: var(--clr-text);
+    transition: all var(--transition-fast);
+    width: 38rem;
+    font-size: var( --font-size-base);
+}
+.genderTitle{
+     font-size: var(--font-main);
+    margin-bottom: 1rem;
+
+}
+.radioStyle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: .5rem;
+
+}
+input[type="radio"]{
+    cursor: pointer;
+   transform: scale(1.2);
+}
+.radioSection{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 16rem;
+    margin-bottom: 3rem;
+    padding: 0 1.2rem;
+
+}
+button{
+    padding: 1rem;
+    border: none;
+    background-color: var(--clr-orange-main);
+    border-radius: var(--radius-full);
+    color: white;
+    cursor: pointer;
+    font-size: var(--font-main);
+}

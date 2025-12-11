@@ -1,4 +1,4 @@
-package Model;
+package Model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,6 +26,8 @@ public class Client {
 	@Column(name = "gender")
     private String gender ;
 	
+	@Column(name = "role")
+    private String role ;
     
     public Client() {}
 
@@ -36,20 +38,21 @@ public class Client {
 		this.email = email;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
-		this.gender = gender ;	
+		this.gender = gender ;
+		this.role = "client";
 	}
     public Client(String name, String email, String password, String phoneNumber,String gender) {
 		this.name= name;
 		this.email = email;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
-		this.gender = gender ;	
+		this.gender = gender;	
+		this.role = "client";
 	}
 
 
 
 	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
 		
 		
 	public String getName() {return name;}
