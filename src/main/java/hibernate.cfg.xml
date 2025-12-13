@@ -24,6 +24,8 @@
         <mapping class="Model.entity.Client"/>
         <mapping class="Model.entity.Reservation"/>
         <mapping class="Model.entity.Voyage"/>
+        <mapping class="Model.entity.Feedback"/>
+        
    
     </session-factory>
 </hibernate-configuration>

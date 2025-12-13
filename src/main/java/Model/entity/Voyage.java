@@ -1,6 +1,7 @@
 package Model.entity;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +11,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Voyage {
+	
+	public Voyage() {}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -20,17 +23,18 @@ public class Voyage {
 	@Column(name = "budget")
 	private float budget;
 	
-	@Column(name = "date")
-	private Date date;
+	@Column(name = "Depart")
+	private LocalDate Depart;
 	
 	@Column(name = "type")
 	private String type;
 	
-	public Voyage(int id, String destination, float budget, String type) {
+	public Voyage(int id, String destination, float budget, String type, LocalDate Depart) {
 		this.id = id;
 		this.destination = destination;
 		this.budget = budget;
 		this.type = type;
+		this.Depart = Depart;
 	}
 	public int getId() {
 		return id;
@@ -59,4 +63,9 @@ public class Voyage {
 	public void setType(String type) {
 		this.type = type;
 	}
+	public LocalDate getDate() {
+		return Depart;
+	}
+
+	
 }

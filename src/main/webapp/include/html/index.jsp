@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,7 @@
     <title>Page d'acceuil</title>
     <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="../css/VarStyle.css">
+       <link rel="stylesheet" href="../css/NavBar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
      <!--<script src="../js/destinations.js"></script>--> 
@@ -13,7 +16,7 @@
    
 </head>
 <body>
-    <header></header>
+    <jsp:include page="header.jsp"></jsp:include>
     <section class="hero">
 
         <div class="hero__content">
@@ -198,7 +201,6 @@
     </div>
   </div>
 </div>
-  <script src="../js/header.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/feedback.js"></script>
 </body>
