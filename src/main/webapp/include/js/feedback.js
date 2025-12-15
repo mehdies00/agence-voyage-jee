@@ -27,24 +27,9 @@ function remToPx(rem) {
  * @param {string} name - The user's name for initials.
  * @returns {string} The placeholder URL.
  */
-async function GetUser(id){
-	try{
-			const response = await fetch(`/agence-de-voyage/GET_ID.cl?id=${id}`);
-			if(!response.ok){
-				throw new Error("echec du fetch : "+ response.status);
-			}
-			const user = await response.json();	
-						return user;
-		}catch(e){
-			console.log("error : ",e);
-			return null;
-		}
-}
-
- function getPlaceholderImg(name) {
-	
+function getPlaceholderImg(name) {
     const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-	 // Utilise la couleur primaire du site pour les placeholders dynamiques
+    // Utilise la couleur primaire du site pour les placeholders dynamiques
     return `https://placehold.co/45x45/FF7F3F/FFFFFF?text=${initials}`;
 }
 
@@ -53,8 +38,8 @@ async function GetUser(id){
 // ===========================================
 
 /** Loads feedback data from localStorage or uses seed data. */
-async function loadFeedbacks() {
-   /* const storedFeedbacks = localStorage.getItem(STORAGE_KEY);
+function loadFeedbacks() {
+    const storedFeedbacks = localStorage.getItem(STORAGE_KEY);
     if (storedFeedbacks) {
         return JSON.parse(storedFeedbacks);
     }
@@ -66,19 +51,7 @@ async function loadFeedbacks() {
         { id: 3, name: "Yassine Idrissi", description: "Super practical and very intuitive. Highly recommended! The design is pleasant and the features are comprehensive.", date: "2025-07-01" },
         { id: 4, name: "Léa Dubois", description: "Very satisfied with the results obtained, a real help for my project. The clarity of the information is a big plus.", date: "2025-08-20" },
         { id: 5, name: "David Chen", description: "Exceptional quality and fast delivery. A reliable tool that I will continue to use regularly.", date: "2025-09-05" },
-    ];*/
-	
-	try{
-		const response = await fetch("/agence-de-voyage/GET.fb");
-		if(!response.ok){
-			throw new Error("echec du fetch : "+ response.status);
-		}
-		const storedFeedbacks = await response.json();	
-					return storedFeedbacks;
-	}catch(e){
-		console.log("error : ",e);
-		return [];
-	}
+    ];
 }
 
 /** Saves the current feedbacks array to localStorage. */
@@ -119,24 +92,23 @@ function addNewFeedback(name, message) {
 // ===========================================
 
 /** Renders the HTML string for a single feedback card. */
-async function createCardHtml(feedback) {
-	const clientInfo = await GetUser(feedback.userId);
-	const imgUrl = feedback.img || getPlaceholderImg(clientInfo.name);
+function createCardHtml(feedback) {
+    const imgUrl = feedback.img || getPlaceholderImg(feedback.name);
     const dateStr = feedback.date ? 
         new Date(feedback.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }) 
         : '';
 
     return `
-        <div class="feedback__card" aria-label="Commentaire de ${clientInfo.name}">
+        <div class="feedback__card" aria-label="Commentaire de ${feedback.name}">
             <i class="ri-double-quotes-l feedback__quote"></i>
             <p class="feedback__description">
                 ${feedback.description}
             </p>
             <div class="feedback__secondepart">
-                <img class="feedback__img" src="${imgUrl}" alt="Photo de ${clientInfo.name}" 
-                     onerror="this.onerror=null; this.src='${getPlaceholderImg(clientInfo.name)}'">
+                <img class="feedback__img" src="${imgUrl}" alt="Photo de ${feedback.name}" 
+                     onerror="this.onerror=null; this.src='${getPlaceholderImg(feedback.name)}'">
                 <div>
-                    <h4 class="feedback__heading">${clientInfo.name}</h4>
+                    <h4 class="feedback__heading">${feedback.name}</h4>
                     <span style="font-size: 1.3rem; color: var(--clr-text-muted);">${dateStr}</span>
                 </div>
             </div>
@@ -145,22 +117,22 @@ async function createCardHtml(feedback) {
 }
 
 /** Rebuilds the carousel wrapper with new data (including clones). */
-async function rebuildCarousel() {
-
+function rebuildCarousel() {
     if (feedbacks.length === 0) {
         wrapper.innerHTML = '<p class="feedback__loading-message">No comments found.</p>';
         return;
     }
-    const initialContent = await Promise.all(feedbacks.map(createCardHtml));
+
+    const initialContent = feedbacks.map(createCardHtml).join('');
     // Clones of the last cards added to the front
-    const leadingClones =  await Promise.all( feedbacks.slice(-CLONE_COUNT).map(createCardHtml));
+    const leadingClones = feedbacks.slice(-CLONE_COUNT).map(createCardHtml).join('');
     // Clones of the first cards added to the end
-    const trailingClones = await Promise.all(feedbacks.slice(0, CLONE_COUNT).map(createCardHtml));
+    const trailingClones = feedbacks.slice(0, CLONE_COUNT).map(createCardHtml).join('');
 
     // The order must be: TRAILING_CLONES + REAL_CARDS + LEADING_CLONES
     // Note: The logic for infinite scrolling uses the *last* real cards as leading clones,
     // and the *first* real cards as trailing clones to wrap around correctly.
-    wrapper.innerHTML = leadingClones.join() + initialContent.join() + trailingClones.join();
+    wrapper.innerHTML = leadingClones + initialContent + trailingClones;
 
     // Ensure we are positioned on the first real card (index CLONE_COUNT)
     if (currentIndex < CLONE_COUNT || currentIndex > feedbacks.length + CLONE_COUNT - 1) {
@@ -287,10 +259,10 @@ function handleFormSubmission(event) {
 // MAIN INITIALIZATION
 // ===========================================
 
-async function initCarousel() {
+function initCarousel() {
     try {
         // Load data from localStorage or use seed data
-        feedbacks = await loadFeedbacks();
+        feedbacks = loadFeedbacks();
         saveFeedbacks(); 
 
         rebuildCarousel(); // Render initial content

@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +6,6 @@
     <title>Page d'acceuil</title>
     <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="../css/VarStyle.css">
-       <link rel="stylesheet" href="../css/NavBar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
      <!--<script src="../js/destinations.js"></script>--> 
@@ -16,7 +13,7 @@
    
 </head>
 <body>
-    <jsp:include page="header.jsp"></jsp:include>
+    <header></header>
     <section class="hero">
 
         <div class="hero__content">
@@ -34,6 +31,9 @@
               </div>
           </div>
         </div>
+    </section>
+    
+
     </section>
    <section class="Photo-gallery">
     <div class="container">
@@ -68,12 +68,12 @@
  <section class="contact">
     <div class="footer__container">
         <div class="contact__form-area">
-            <h3 class="footer__title">Contact Us</h3>
+            <h3 class="footer__title">Feedback</h3>
             <p class="footer__slogan">Share your experience or simply ask a question to our team.</p>
             <form id="contactForm" class="contact__form">
                 <input type="text" id="contactName" placeholder="Your Name" required>
                 <input type="email" id="contactEmail" placeholder="Your Email" required>
-                <textarea id="contactMessage" placeholder="Your Message / Feedback" rows="4" required></textarea>
+                <textarea id="contactMessage" placeholder=" Feedback" rows="4" required></textarea>
                 <button type="submit" class="contact__submit-btn">Send Message</button>
                 <p id="formMessage" class="contact__message" style="display:none;"></p>
             </form>
@@ -93,7 +93,7 @@
             <h3 class="footer__title">Connect with Us</h3>
             <div class="footer__contact-info">
                 <p><i class="fa-solid fa-envelope"></i> contact@creativevoyage.com</p>
-                <p><i class="fa-solid fa-phone"></i> +33 1 23 45 67 89</p>
+                <p><i class="fa-solid fa-phone"></i> +212694545489</p>
             </div>
             <div class="footer__socials">
                 <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
@@ -135,6 +135,7 @@
     </div>
   </div>
 </div>
+  <script src="../js/header.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/feedback.js"></script>
 </body>
