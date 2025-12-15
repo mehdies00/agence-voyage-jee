@@ -6,7 +6,7 @@
             <a href="#" class="navbar__logo">Logo</a>
             <ul class="navbar__menu">
                 <li class="navbar__list">
-                    <a href="#" class="navbar__link">Home</a>
+                    <a href="index.jsp" class="navbar__link">Home</a>
                 </li>
             </ul>
         </div>
@@ -22,7 +22,7 @@
             </div>
 
             <div class="navbar__auth">
-                <a href="../html/form.html" class="button button--login">Log in</a>
+                <a href="../html/LoginForm.jsp" class="button button--login">Log in</a>
                 <a href="#" class="button button--signup">Sign Up</a>
             </div>
         </div>
