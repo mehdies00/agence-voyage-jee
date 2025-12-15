@@ -40,73 +40,7 @@
         <h2 class="Photo-gallery__title">
             Discover Your Next Destination, <br>from a World of Possibilities.
         </h2>
-        <div class="photo-gallery__grid">
-            <!-- Card 1: Korea -->
-            <a href="#" class="photo-gallery__item photo-gallery__cardsmall" data-destination="korea">
-                <img class="photo-gallery__img" src="../asset/Tokyo.jpg" alt="South Korea">
-                <div class="photo-gallery__text">
-                    <h3 class="photo-gallery__heading">South Korea</h3>
-                    <p class="photo-gallery__pragraph">
-                        Gyeongbokgung Palace · N Seoul Tower 
-                    </p>
-                </div>
-            </a>
-            <!-- Card 2: Rome -->
-            <a href="#" class="photo-gallery__item photo-gallery__cardmedium" data-destination="rome">
-                <img class="photo-gallery__img" src="../asset/Rome.jpg" alt="Rome">
-                <div class="photo-gallery__text">
-                    <h3 class="photo-gallery__heading">Rome</h3>
-                    <p class="photo-gallery__pragraph">Colosseum · Vatican ·<br>Trevi Fountain</p>
-                </div>
-            </a>
-            <!-- Card 3: Mali -->
-            <a href="#" class="photo-gallery__item photo-gallery__cardsmall" data-destination="mali">
-                <img class="photo-gallery__img photo-gallery__img--mali" src="../asset/mali.jpg" alt="Mali">
-                <div class="photo-gallery__text">
-                    <h3 class="photo-gallery__heading">Mali</h3>
-                    <p class="photo-gallery__pragraph">Timbuktu · Djenné ·<br>Dogon Country</p>
-                </div>
-            </a>
-            <!-- Card 4: India -->
-            <a href="#" class="photo-gallery__item photo-gallery__cardmedium" data-destination="india">
-                <img class="photo-gallery__img" src="../asset/india.jpg" alt="India">
-                <div class="photo-gallery__text">
-                    <h3 class="photo-gallery__heading">India</h3>
-                    <p class="photo-gallery__pragraph">Taj Mahal · Jaipur ·<br>Varanasi</p>
-                </div>
-            </a>
-            <!-- Card 5: Paris -->
-            <a href="#" class="photo-gallery__item photo-gallery__cardlarge" data-destination="paris">
-                <img class="photo-gallery__img" src="../asset/EiffelParis.jpg" alt="Paris">
-                <div class="photo-gallery__text">
-                    <h3 class="photo-gallery__heading">Paris</h3>
-                    <p class="photo-gallery__pragraph">Eiffel Tower · Louvre Museum ·<br>Notre-Dame Cathedral</p>
-                </div>
-            </a>
-            <!-- Card 6: London -->
-            <a href="#" class="photo-gallery__item photo-gallery__cardlarge" data-destination="london">
-                <img class="photo-gallery__img" src="../asset/London.jpg" alt="London">
-                <div class="photo-gallery__text">
-                    <h3 class="photo-gallery__heading">London</h3>
-                    <p class="photo-gallery__pragraph">Big Ben · Tower Bridge ·<br>British Museum</p>
-                </div>
-            </a>
-            <!-- Card 7: Dubai -->
-            <a href="#" class="photo-gallery__item photo-gallery__cardmedium" data-destination="dubai">
-                <img class="photo-gallery__img photo-gallery__img--mali" src="../asset/BurjKhalifa.jpg" alt="Dubai">
-                <div class="photo-gallery__text">
-                    <h3 class="photo-gallery__heading">Dubai</h3>
-                    <p class="photo-gallery__pragraph">Burj Khalifa · Dubai Mall ·<br>Palm Jumeirah</p>
-                </div>
-            </a>
-            <!-- Card 8: Morocco -->
-            <a href="#" class="photo-gallery__item photo-gallery__cardmedium" data-destination="morocco">
-                <img class="photo-gallery__img" src="../asset/HassanTower.jpg" alt="Morocco">
-                <div class="photo-gallery__text">
-                    <h3 class="photo-gallery__heading">Morocco</h3>
-                    <p class="photo-gallery__pragraph">Marrakech · Casablanca ·<br>Fez</p>
-                </div>
-            </a>
+        <div class="photo-gallery__grid">       
         </div>
     </div>
 </section>

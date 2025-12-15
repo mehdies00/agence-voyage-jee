@@ -25,6 +25,7 @@
         <mapping class="Model.entity.Reservation"/>
         <mapping class="Model.entity.Voyage"/>
         <mapping class="Model.entity.Feedback"/>
+        <mapping class="Model.entity.Destination"/>
         
    
     </session-factory>

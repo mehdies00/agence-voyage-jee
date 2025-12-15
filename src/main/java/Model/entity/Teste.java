@@ -1,7 +1,10 @@
 package Model.entity;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
+import Model.dao.DestinationDao;
 import Model.dao.FeedbackDao;
 
 public class Teste {
@@ -14,5 +17,21 @@ public class Teste {
 		FeedbackDao feedbackDao = new FeedbackDao();
 		
 		feedbackDao.save(feedback);*/
+		/*
+		DestinationDao destinationDao = new DestinationDao();
+
+		Destination france = new Destination(
+		    "France",
+		    "The capital of France, famous for the Eiffel Tower, the Louvre, and Notre-Dame.",
+		    "../asset/EiffelParis.jpg",
+		    "Paris",
+		    "2.1 million",
+		    "French",
+		    "Euro",
+		    List.of("Eiffel Tower", "Louvre", "Notre-Dame", "Champs-Élysées"),
+		    List.of("Gastronomy", "Shopping", "Seine River Cruise")
+		);
+		destinationDao.save(france);
+*/
 	}
 }
