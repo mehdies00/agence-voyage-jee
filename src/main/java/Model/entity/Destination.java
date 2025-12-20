@@ -27,6 +27,9 @@ public class Destination {
 	@Column(name = "image")
 	private String image;
 	
+	@Column(name = "Size")
+	private int Size;
+	
 	@Column(name = "capital")
 	private String capital;
 	
@@ -60,22 +63,25 @@ public class Destination {
     public Destination() {
     }
 
-    public Destination(int id, String title, String description, String image, String capital, String population,String language, String currency, List<String> attractions, List<String> activities) {
+    public Destination(int id, String title, String description, String image,int Size, String capital, String population,String language, String currency, List<String> attractions, List<String> activities) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.image = image;
+		this.Size = Size;
 		this.capital = capital;
 		this.population = population;
 		this.language = language;
 		this.currency = currency;
 		this.attractions = attractions;
 		this.activities = activities;
+		
 	}
-    public Destination(String title, String description, String image, String capital, String population,String language, String currency, List<String> attractions, List<String> activities) {
+    public Destination(String title, String description, String image,int Size, String capital, String population,String language, String currency, List<String> attractions, List<String> activities) {
   		this.title = title;
   		this.description = description;
   		this.image = image;
+  		this.Size = Size;
   		this.capital = capital;
   		this.population = population;
   		this.language = language;
@@ -108,6 +114,13 @@ public class Destination {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	public void setSize(int size) {
+		this.Size = size;
+	}
+	public int getSize() {
+		return Size;
+	}
+	
 	public String getCapital() {
 		return capital;
 	}

@@ -2,6 +2,7 @@ package Model.entity;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import Model.dao.DestinationDao;
@@ -33,5 +34,11 @@ public class Teste {
 		);
 		destinationDao.save(france);
 */
+		DestinationDao  destinationDao = new  DestinationDao();
+		Collection< Destination>  destinations  = destinationDao.findAll();
+		
+		for (Destination destination:destinations) {
+			System.out.println(destination.getSize());
+		}
 	}
 }

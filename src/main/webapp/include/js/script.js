@@ -28,10 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 	
   function createDestinationCard(destination, index) {
-          const a = document.createElement('a');
+
+	 const a = document.createElement('a');
           a.href = "#";
-          a.className = "photo-gallery__item photo-gallery__cardsmall";
-          a.setAttribute('data-key', index); 
+          a.className = "photo-gallery__item ";
+          var size = "";
+		  if(destination.size == 1){
+			size = "photo-gallery__cardsmall";
+		  }else if(destination.size == 2){
+			size = "photo-gallery__cardmedium" ;
+		  }else{
+			size = "photo-gallery__cardlarge" ;
+		  }
+		 
+		  a.classList.add(size);
+		  a.setAttribute('data-key', index); 
 
           const img = document.createElement('img');
           img.className = "photo-gallery__img";
