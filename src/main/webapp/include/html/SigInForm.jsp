@@ -11,8 +11,8 @@
 <body>
   
 <section class="login">
-
-    <form action="${pageContext.request.contextPath}/LogIn.lg" method="post" class="login__form" id="loginCard">
+<!--
+    <form action="${pageContext.request.contextPath}/LogIn.lg" method="post" class="login__form hidden" id="loginCard">
         <h2 class="login__heading" style="margin-bottom: 2rem;">
             Log in to view this page
         </h2>
@@ -59,12 +59,11 @@
 
         <div class="login__switch">
             Don't have an account?
-            <a href="./SigInForm.jsp" id="showRegister">Sign up</a>            
-            
+            <strong id="showRegister">Sign up</strong>
         </div>
     </form>
-<!--
-    <form action="${pageContext.request.contextPath}/SignIn.lg" method="post" class="login__form hidden" id="registerCard">
+  -->
+    <form action="${pageContext.request.contextPath}/SignIn.lg" method="post" class="login__form " id="registerCard">
         <h2 class="login__heading">Create Account</h2>
 
         <div class="login__group">
@@ -95,10 +94,10 @@
 
         <div class="login__switch">
             Already have an account?
-            <a href="./LoginForm.jsp" id="showLogin">Log in</strong>
+            <a href="./LoginForm.jsp" id="showLogin">Log in</a>            
         </div>
     </form>
--->
+
 </section>
 
    

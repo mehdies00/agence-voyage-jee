@@ -1,11 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'acceuil</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/VarStyle.css">
-     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
    
@@ -47,7 +48,7 @@
         
         <div class="feedback__container">
 
-            <button class="feedback__arrow feedback__arrow--left" id="prevButton" aria-label="Commentaire précédent">
+            <button class="feedback__arrow feedback__arrow--left" id="prevButton" aria-label="Commentaire prÃ©cÃ©dent">
                 <i class="ri-arrow-left-s-line"></i>
             </button>
 
@@ -124,7 +125,7 @@
       <h3 class="popup-title--secondary">Attractions</h3>
       <ul class="popup__unlist" id="popup-attractions"></ul>
 
-      <h3 class="popup-title--secondary">Activités</h3>
+      <h3 class="popup-title--secondary">ActivitÃ©s</h3>
       <ul class="popup__unlist"id="popup-activities"></ul>
     </div>
 
@@ -133,7 +134,7 @@
     </div>
   </div>
 </div>
-  <script src="../js/script.js"></script>
-  <script src="../js/feedback.js"></script>
+ <script src="../js/script.js"></script>
+<script src="../js/feedback.js"></script>
 </body>
 </html>
