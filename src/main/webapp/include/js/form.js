@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerCard = document.getElementById('registerCard');
     const showRegisterBtn = document.getElementById('showRegister');
     const showLoginBtn = document.getElementById('showLogin');
-
+/*
     if (showRegisterBtn) {
         showRegisterBtn.addEventListener('click', () => {
             loginCard.classList.add('hidden');
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loginCard.classList.remove('hidden');
         });
     }
-
+*/
     const loginForm = document.getElementById('loginCard');
     const loginEmail = document.getElementById('email');
     const loginPass = document.getElementById('password');
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (loginForm) {
+    /*if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             let isValid = true;
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Connexion réussie ! (Simulation)");
             }
         });
-    }
+    }*/
 
     const registerForm = document.getElementById('registerCard');
     const regUsername = document.getElementById('reg-username');
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const regPass = document.getElementById('reg-password');
     const regPassConfirm = document.getElementById('reg-password-confirm');
 
-    if (registerForm) {
+    /*if (registerForm) {
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
             let isValid = true;
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Inscription réussie ! (Simulation)");
             }
         });
-    }
+    }*/
 
     function setError(input, message) {
         const group = input.parentElement;

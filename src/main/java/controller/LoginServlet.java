@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet(name = "lg", urlPatterns = {"/LoginServlet","*.lg"})
 public class LoginServlet extends jakarta.servlet.http.HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,25 +36,45 @@ public class LoginServlet extends jakarta.servlet.http.HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email=request.getParameter("email");
-		String pwd=request.getParameter("pass");
+		String path = request.getServletPath();
 		Configuration configuration = new Configuration().configure();
 		SessionFactory sessionFactory = configuration.buildSessionFactory();
 		Session session = sessionFactory.openSession();
+	
+		if(path.equals("/LogIn.lg")) {
+		String email=request.getParameter("email");
+		String pwd=request.getParameter("pass");
 		Client client = (Client) session.createQuery("from Client where email = :email and password = :pwd ", Client.class)
 				.setParameter("email", email)
 				.setParameter("pwd", pwd)
 				.getSingleResultOrNull();
 		response.setContentType("text/html;charset=UTF-8");
 		if(client != null) {
-			response.getWriter().println("<h1>login confirmé</h1>");		
-			response.getWriter().println("<p>Nom d'utilisateur reçu : <strong>" + client.getName() + " id: "+ client.getId() + "</strong></p>");
+			//getServletContext().getRequestDispatcher("/include/html/index.jsp").forward(request, response);
+			response.sendRedirect("./include/html/index.jsp");
+
 		}
 		else {
-			response.getWriter().println("nope");
+			//getServletContext().getRequestDispatcher("/include/html/LoginForm.jsp").forward(request, response);
+			response.sendRedirect("./include/html/LoginForm.jsp");
+
 		}
 		session.close();
 		sessionFactory.close();
+	}else if(path.equals("/SignIn.lg")){
+		String username=request.getParameter("username");
+		String email=request.getParameter("email");
+		String pwd=request.getParameter("pass");
+		Client user = new Client(username,email,pwd);
+    	session.getTransaction().begin();
+    	session.persist(user);
+    	session.getTransaction().commit();
+    	session.close();
+    	sessionFactory.close();
+    	//getServletContext().getRequestDispatcher("./include/html/index.jsp").forward(request, response);
+		response.sendRedirect("./include/html/index.jsp");
+
+	}
 	}
 
 }

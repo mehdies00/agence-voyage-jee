@@ -22,8 +22,8 @@
             </div>
 
             <div class="navbar__auth">
-                <a href="../html/LoginForm.jsp" class="button button--login">Log in</a>
-                <a href="#" class="button button--signup">Sign Up</a>
+                <a href="./LoginForm.jsp" class="button button--login">Log in</a>
+                <a href="./SigInForm.jsp" class="button button--signup">Sign Up</a>
             </div>
         </div>
 
