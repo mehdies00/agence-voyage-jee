@@ -41,6 +41,7 @@ function swapFields() {
 function selectSegment(btn) {
     document.querySelectorAll('.segment-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+	document.getElementById('hiddenType').value = btn.value;
 }
 
 function openOffer(title, sub, price, img) {

@@ -22,8 +22,7 @@
       	<property name="hibernate.allow_update_outside_transaction">true</property>
         <!-- Mapping classes -->
         <mapping class="Model.entity.Client"/>
-        <mapping class="Model.entity.Reservation"/>
-        <mapping class="Model.entity.Voyage"/>
+         <mapping class="Model.entity.Voyage"/>
         <mapping class="Model.entity.Feedback"/>
         <mapping class="Model.entity.Destination"/>
         

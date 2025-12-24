@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,12 +41,13 @@
             </button>
 
             <div id="panel-booking" class="panel-content active">
-                <form id="bookingForm" onsubmit="event.preventDefault(); alert('Searching for flights...');">
+                <form id="bookingForm" 
+                action="${pageContext.request.contextPath}/GET.vg">
                     <div class="search-grid">
                         <div class="input-group">
                             <label class="field-label">From</label>
                             <div class="input-wrapper">
-                                <input type="text" id="origin" class="form-input" value="Casablanca (CMN)">
+                                <input type="text" id="origin" class="form-input" name="from" value="Casablanca (CMN)">
                                 <i class="fa-solid fa-plane-departure input-icon"></i>
                             </div>
                         </div>
@@ -59,7 +61,7 @@
                         <div class="input-group">
                             <label class="field-label">Destination</label>
                             <div class="input-wrapper">
-                                <input type="text" id="destination" class="form-input" placeholder="Where are you going?">
+                                <input type="text" id="destination" name="destination"  class="form-input" placeholder="Where are you going?">
                                 <i class="fa-solid fa-location-dot input-icon"></i>
                             </div>
                         </div>
@@ -68,14 +70,14 @@
                             <div class="input-group">
                                 <label class="field-label">Departure</label>
                                 <div class="input-wrapper">
-                                    <input type="text" onfocus="(this.type='date')" class="form-input" placeholder="Select Date">
+                                    <input name="depart"  type="text" onfocus="(this.type='date')" class="form-input" placeholder="Select Date">
                                     <i class="fa-regular fa-calendar input-icon"></i>
                                 </div>
                             </div>
                             <div class="input-group">
                                 <label class="field-label">Return</label>
                                 <div class="input-wrapper">
-                                    <input type="text" onfocus="(this.type='date')" class="form-input" placeholder="Select Date">
+                                    <input  name ="Return" type="text" onfocus="(this.type='date')" class="form-input" placeholder="Select Date">
                                     <i class="fa-regular fa-calendar input-icon"></i>
                                 </div>
                             </div>
@@ -85,7 +87,7 @@
                             <div class="input-group" style="position: relative;">
                                 <label class="field-label">Travelers</label>
                                 <div class="input-wrapper">
-                                    <input type="text" id="travelerInput" class="form-input" value="1 Adult" readonly style="cursor: pointer;" onclick="toggleTravelerMenu(event)">
+                                    <input name="travelers"  type="text" id="travelerInput" class="form-input" value="1 Adult" readonly style="cursor: pointer;" onclick="toggleTravelerMenu(event)">
                                     <i class="fa-solid fa-user-group input-icon"></i>
                                 </div>
 
@@ -129,9 +131,10 @@
                             <div class="input-group">
                                 <label class="field-label">Class</label>
                                 <div class="segmented-control">
-                                    <button type="button" class="segment-btn active" onclick="selectSegment(this)">Eco</button>
-                                    <button type="button" class="segment-btn" onclick="selectSegment(this)">Prem</button>
-                                    <button type="button" class="segment-btn" onclick="selectSegment(this)">Luxury</button>
+                                <input type="hidden" name="type" id="hiddenType" value="1">
+                                    <button  value="1"  type="button" class="segment-btn active" onclick="selectSegment(this)">Eco</button>
+                                    <button  value="2"  type="button" class="segment-btn" onclick="selectSegment(this)">Prem</button>
+                                    <button value="3"    type="button" class="segment-btn" onclick="selectSegment(this)">Luxury</button>
                                 </div>
                             </div>
 
@@ -142,7 +145,7 @@
             </div>
 
             <div id="panel-offers" class="panel-content">
-                <h3 style="margin-bottom: 20px; color: var(--accent-purple);">🔥 Best Deals Right Now</h3>
+                <h3 style="margin-bottom: 20px; color: var(--accent-purple);">ð¥ Best Deals Right Now</h3>
                 <div class="offers-grid">
                     <div class="offer-card">
                         <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=800&q=80');">
@@ -150,11 +153,11 @@
                         </div>
                         <div class="offer-content">
                             <div class="offer-title">Marrakech</div>
-                            <div class="offer-sub">Flight + 5★ Hotel (3 nights)</div>
+                            <div class="offer-sub">Flight + 5â Hotel (3 nights)</div>
                             <div style="margin: 10px 0;">
                                 <span class="offer-price">2,490 MAD</span>
                             </div>
-                            <button class="offer-btn" onclick="openOffer('Marrakech', 'Flight + 5★ Hotel (3 nights)', '2,490 MAD', 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=800&q=80')">View Deal</button>
+                            <button class="offer-btn" onclick="openOffer('Marrakech', 'Flight + 5â Hotel (3 nights)', '2,490 MAD', 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=800&q=80')">View Deal</button>
                         </div>
                     </div>
 
@@ -193,11 +196,11 @@
                     <i class="fa-solid fa-passport" style="font-size: 3rem; color: var(--accent-purple); margin-bottom: 20px;"></i>
                     <h3 style="margin-bottom: 10px;">Retrieve Your Booking</h3>
                     <p style="color: var(--gray-text); margin-bottom: 30px;">Enter your reference number to manage your trip.</p>
-                    <form onsubmit="event.preventDefault(); alert('Connecting to your file...');">
+                    <form  >
                         <div class="manage-grid">
                             <div class="input-wrapper">
                                 <label class="field-label" style="text-align: left;">Booking Reference (PNR)</label>
-                                <input type="text" class="form-input" placeholder="e.g., A6T9PZ">
+                                <input name="voyageId"  type="text" class="form-input" placeholder="e.g., A6T9PZ">
                             </div>
                             <div class="input-wrapper">
                                 <label class="field-label" style="text-align: left;">Last Name</label>
