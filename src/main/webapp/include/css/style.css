@@ -588,6 +588,7 @@
 
 .contact__form input[type="text"],
 .contact__form input[type="email"],
+.contact__form input[type="password"],
 .contact__form textarea {
     padding: 1.2rem;
     border: 1px solid #4a5568;

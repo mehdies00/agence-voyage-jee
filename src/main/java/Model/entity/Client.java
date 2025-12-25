@@ -20,11 +20,6 @@ public class Client {
 	@Column(name = "password")
     private String password;
 	
-	@Column(name = "phoneNumber")
-    private String phoneNumber ;
-	
-	@Column(name = "gender")
-    private String gender ;
 	
 	@Column(name = "role")
     private String role ;
@@ -45,8 +40,7 @@ public class Client {
 		this.password = password;
 		this.role = "client";
 	}
-
-
+     
 
 	public int getId() {return id;}
 		
@@ -62,17 +56,24 @@ public class Client {
 	
 	public String getPassword() {return password;}
 	public void setPassword(String password) {this.password = password;}
+
+
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
 		
 	
-
-	public String getPhoneNumber() {return phoneNumber;}
-	public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
-
-		
-	
-	public String getGender() {return gender;}
-	public void setGender(String gender) {this.gender = gender;}
-		
+ 
 	
 	}
     

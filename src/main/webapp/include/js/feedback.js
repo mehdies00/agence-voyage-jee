@@ -74,6 +74,7 @@ async function loadFeedbacks() {
 			throw new Error("echec du fetch : "+ response.status);
 		}
 		const storedFeedbacks = await response.json();	
+		console.log(storedFeedbacks);
 					return storedFeedbacks;
 	}catch(e){
 		console.log("error : ",e);
@@ -82,28 +83,51 @@ async function loadFeedbacks() {
 }
 
 /** Saves the current feedbacks array to localStorage. */
-function saveFeedbacks() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(feedbacks));
+ async function saveFeedbacks(userObject, feedbackObject) {
+    try {
+         const clientResponse = await fetch("/agence-de-voyage/POST.cl", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userObject),
+        });
+        const savedClient = await clientResponse.json();
+        console.log('Client Saved:', savedClient);
+
+         feedbackObject.userId = savedClient.id; 
+
+         const feedbackResponse = await fetch("/agence-de-voyage/POST.fb", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(feedbackObject), 
+        });
+        const savedFeedback = await feedbackResponse.json();
+        console.log('Feedback Saved:', savedFeedback);
+
+    } catch (error) {
+        console.error('error:', error);
+    }
 }
 
 /** Adds a new feedback and updates the carousel. */
-function addNewFeedback(name, message) {
-    const nextId = feedbacks.length > 0 ? Math.max(...feedbacks.map(f => f.id)) + 1 : 1;
-    const feedbackObject = { 
-        id: nextId, 
+ async function addNewFeedback(name,email,password, message) {
+     const userObject = { 
         name: name, 
+		email:email,
+		password : password,
+		}
+	const feedbackObject = { 
+		userId:null,
         description: message, 
-        // Date format YYYY-MM-DD
         date: new Date().toISOString().split('T')[0], 
-        img: null
-    };
+     };
     
     // 1. Add to the main array and save
-    feedbacks.push(feedbackObject);
-    saveFeedbacks();
+      await saveFeedbacks(userObject,feedbackObject);
 
-    // 2. Rebuild the carousel HTML with the new data
-    rebuildCarousel();
+	  feedbacks = await loadFeedbacks();
+ 
+	  // 2. Rebuild the carousel HTML with the new data
+    await rebuildCarousel();
     
     // 3. Set index to the newly added card (last element in the main array)
     currentIndex = feedbacks.length + CLONE_COUNT - 1;
@@ -145,7 +169,7 @@ async function createCardHtml(feedback) {
 }
 
 /** Rebuilds the carousel wrapper with new data (including clones). */
-async function rebuildCarousel() {
+  async function rebuildCarousel() {
 
     if (feedbacks.length === 0) {
         wrapper.innerHTML = '<p class="feedback__loading-message">No comments found.</p>';
@@ -224,7 +248,7 @@ function handleTransitionEnd() {
     nextButton.disabled = false;
 }
 
-function nextSlide() {
+  function nextSlide() {
     if (isSliding) return; 
     isSliding = true;
     prevButton.disabled = true;
@@ -247,18 +271,20 @@ function prevSlide() {
 // CONTACT FORM HANDLER
 // ===========================================
 
-function handleFormSubmission(event) {
+async function handleFormSubmission(event) {
     event.preventDefault();
     
     const nameInput = document.getElementById('contactName');
     const emailInput = document.getElementById('contactEmail');
-    const messageInput = document.getElementById('contactMessage');
+	const messageInput = document.getElementById('contactMessage');
+	const pwdInput = document.getElementById('contactPassword');
     
     const name = nameInput.value.trim();
     const message = messageInput.value.trim();
     const email = emailInput.value.trim(); // Although not used in card, good practice to collect
+	const password = pwdInput.value.trim();
 
-    if (!name || !message || !email) {
+    if (!name || !message || !email || !password) {
         formMessage.textContent = 'Please fill out all fields.';
         formMessage.className = 'contact__message error';
         formMessage.style.display = 'block';
@@ -266,7 +292,7 @@ function handleFormSubmission(event) {
     }
     
     // Call the function to add, save, and update the carousel
-    addNewFeedback(name, message);
+   await addNewFeedback(name,email,password, message);
 
     // Display success message
     formMessage.textContent = 'Thank you for your feedback! It has been added to the carousel.';
@@ -291,9 +317,9 @@ async function initCarousel() {
     try {
         // Load data from localStorage or use seed data
         feedbacks = await loadFeedbacks();
-        saveFeedbacks(); 
+      //  saveFeedbacks(); 
 
-        rebuildCarousel(); // Render initial content
+        await rebuildCarousel(); // Render initial content
         
         // Setup event listeners
         prevButton.addEventListener('click', prevSlide);

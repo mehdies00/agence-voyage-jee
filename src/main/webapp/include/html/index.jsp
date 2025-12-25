@@ -21,7 +21,7 @@
               <p class="hero__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, </p>
               <div class="hero__btn">
                 <a href="#" class="btn hero__btn--orange ">Start planing</a>
-                <a href="#" class="btn hero__btn--text">
+                <a href="./SigInForm.jsp" class="btn hero__btn--text">
                     Sign up
                 <svg class="arrow-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
@@ -72,6 +72,7 @@
             <form id="contactForm" class="contact__form">
                 <input type="text" id="contactName" placeholder="Your Name" required>
                 <input type="email" id="contactEmail" placeholder="Your Email" required>
+                <input type="password" id="contactPassword" placeholder="Your Password" required>
                 <textarea id="contactMessage" placeholder=" Feedback" rows="4" required></textarea>
                 <button type="submit" class="contact__submit-btn">Send Message</button>
                 <p id="formMessage" class="contact__message" style="display:none;"></p>

@@ -63,8 +63,20 @@ public class ClientServlet extends HttpServlet {
 			    response.setContentType("application/json");
 			    response.setCharacterEncoding("UTF-8");
 			    response.getWriter().write(jsonClient);
+			}else if(path.equals("/POST.cl")) {
+			ObjectMapper  mapper = JsonMapper.builder()
+			        .addModule(new JavaTimeModule())
+			        .build();
+			
+			ClientDao clientDao = new ClientDao();
+			Client client = mapper.readValue(request.getReader(), Client.class);
+			client = clientDao.save(client);
+			String json = mapper.writeValueAsString(client);
+			
+			response.getWriter().write(json);
 		}
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
