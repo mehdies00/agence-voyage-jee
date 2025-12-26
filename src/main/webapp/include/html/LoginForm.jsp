@@ -3,9 +3,9 @@
 <html>
 <head>
     <title>Connexion - Voyage App</title>
-    <link rel="stylesheet" href="../css/form.css"> 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/VarStyle.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/form.css"> 
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/style.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/VarStyle.css">
 </head>
   
 <body>
@@ -40,13 +40,13 @@
         </div>
 
         <div class="login__group">
-            <input type="email" name="email" id="email" class="login__input" placeholder=" ">
+            <input required type="email" name="email" id="email" class="login__input" placeholder=" ">
             <label for="email" class="login__label">Email</label>
             <span class="login__error-message">Email invalide</span>
         </div>
 
         <div class="login__group">
-            <input type="password" name="pass" id="password" class="login__input" placeholder=" ">
+            <input  required type="password" name="pass" id="password" class="login__input" placeholder=" ">
             <label for="password" class="login__label">Password</label>
             <span class="login__error-message">Mot de passe requis</span>
             <div class="login__toggle-btn" id="togglePasswordBtn">
@@ -103,6 +103,6 @@
 
    
 
-<script src="../js/form.js"></script>
+<script src="${pageContext.request.contextPath}/include/js/form.js"></script>
 </body>
 </html>

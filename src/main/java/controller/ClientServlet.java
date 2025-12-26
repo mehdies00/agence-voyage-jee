@@ -2,6 +2,7 @@ package controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
@@ -28,7 +29,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class ClientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private static final ClientDao  clientDao = new  ClientDao();
+	private static final ObjectMapper  mapper = JsonMapper.builder()
+	        .addModule(new JavaTimeModule())
+	        .build();
     /**
      * Default constructor. 
      */
@@ -41,39 +45,32 @@ public class ClientServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 		if(path.equals("/GET.cl")) {
-			 ClientDao  clientDao = new  ClientDao();
 			Collection< Client>  clients  = clientDao.findAll();
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			ObjectMapper  mapper = new ObjectMapper();
-			String json = mapper.writeValueAsString(clients);
-			response.getWriter().write(json);
+			mapper.writeValue( response.getWriter(), clients);
 		}
 		else if(path.equals("/GET_ID.cl")) {
-			    String idParam = request.getParameter("id");
+			    
+				String idParam = request.getParameter("id");
+				if(idParam == null) {
+					response.setStatus(400);
+					return;
+				}
 			    int idUser = Integer.parseInt(idParam);
-			    
-			    ClientDao clientDao = new ClientDao();
-			    Optional<Client> client = clientDao.findById(idUser);
-			    
-			    ObjectMapper mapper = new ObjectMapper();
-			    String jsonClient = mapper.writeValueAsString(client.orElse(null));
-			    
-			    response.setContentType("application/json");
-			    response.setCharacterEncoding("UTF-8");
-			    response.getWriter().write(jsonClient);
-			}else if(path.equals("/POST.cl")) {
-			ObjectMapper  mapper = JsonMapper.builder()
-			        .addModule(new JavaTimeModule())
-			        .build();
-			
-			ClientDao clientDao = new ClientDao();
-			Client client = mapper.readValue(request.getReader(), Client.class);
+  			    Optional<Client> clientOpt = clientDao.findById(idUser);
+  			    if(clientOpt.isEmpty()) {
+  			    mapper.writeValue(response.getWriter(), null);
+  			     
+  			    }else {
+  			    	Client client = clientOpt.get();
+  	  			    mapper.writeValue(response.getWriter(), client);
+  			    }
+ 		}else if(path.equals("/POST.cl")) {
+ 			Client client = mapper.readValue(request.getReader(), Client.class);
 			client = clientDao.save(client);
-			String json = mapper.writeValueAsString(client);
-			
-			response.getWriter().write(json);
+			mapper.writeValue(response.getWriter(), client);
 		}
 	}
 	

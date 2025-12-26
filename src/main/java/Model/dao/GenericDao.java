@@ -50,6 +50,14 @@ public class GenericDao<ENTITY, PRIMARY_KEY> {
 			return Optional.ofNullable(s.get(clazz,id));
 		}
 	}
+	public Optional<ENTITY> findByStr(String value,String tabName){
+		try(var s = HibernateUtils.getSessionFactory().openSession()){
+			String hql = String.format("FROM %s WHERE lower(%s) = lower(:val)", clazz.getSimpleName(),tabName);
+			return s.createQuery(hql,clazz)
+					.setParameter("val", value)
+					.uniqueResultOptional();
+		}
+	}
 	public ENTITY save(ENTITY u) {
 		return runInTransaction(s->{
 			s.persist(u);

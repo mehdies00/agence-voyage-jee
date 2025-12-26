@@ -3,9 +3,9 @@
 <html>
 <head>
     <title>Connexion - Voyage App</title>
-    <link rel="stylesheet" href="../css/form.css"> 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/VarStyle.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/form.css"> 
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/VarStyle.css">
 </head>
   
 <body>
@@ -67,25 +67,25 @@
         <h2 class="login__heading">Create Account</h2>
 
         <div class="login__group">
-            <input type="text" name="username" id="reg-username" class="login__input" placeholder=" ">
+            <input required type="text" name="username" id="reg-username" class="login__input" placeholder=" ">
             <label for="reg-username" class="login__label">Username</label>
             <span class="login__error-message">Nom d'utilisateur requis</span>
         </div>
 
         <div class="login__group">
-            <input type="email" name="email" id="reg-email" class="login__input" placeholder=" ">
+            <input required type="email" name="email" id="reg-email" class="login__input" placeholder=" ">
             <label for="reg-email" class="login__label">Email</label>
             <span class="login__error-message">Email invalide</span>
         </div>
 
         <div class="login__group">
-            <input type="password" name="pass" id="reg-password" class="login__input" placeholder=" ">
+            <input required type="password" name="pass" id="reg-password" class="login__input" placeholder=" ">
             <label for="reg-password" class="login__label">Password</label>
             <span class="login__error-message">Mot de passe requis</span>
         </div>
 
         <div class="login__group">
-            <input type="password" id="reg-password-confirm" class="login__input" placeholder=" ">
+            <input required type="password" id="reg-password-confirm" class="login__input" placeholder=" ">
             <label for="reg-password-confirm" class="login__label">Confirm Password</label>
             <span class="login__error-message">Les mots de passe ne correspondent pas</span>
         </div>
@@ -102,6 +102,6 @@
 
    
 
-<script src="../js/form.js"></script>
+<script src="${pageContext.request.contextPath}/include/js/form.js"></script>
 </body>
 </html>

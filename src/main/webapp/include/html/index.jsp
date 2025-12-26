@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'acceuil</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/VarStyle.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/VarStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
    
@@ -20,7 +20,7 @@
               <h1 class="hero__title">The only website you need to travel</h1>
               <p class="hero__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, </p>
               <div class="hero__btn">
-                <a href="#" class="btn hero__btn--orange ">Start planing</a>
+                <a href="./PageReservation.jsp" class="btn hero__btn--orange ">Start planing</a>
                 <a href="./SigInForm.jsp" class="btn hero__btn--text">
                     Sign up
                 <svg class="arrow-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -135,7 +135,7 @@
     </div>
   </div>
 </div>
- <script src="../js/script.js"></script>
-<script src="../js/feedback.js"></script>
+ <script src="${pageContext.request.contextPath}/include/js/script.js"></script>
+<script src="${pageContext.request.contextPath}/include/js/feedback.js"></script>
 </body>
 </html>

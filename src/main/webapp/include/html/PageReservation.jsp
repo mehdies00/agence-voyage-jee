@@ -11,9 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="../css/VarStyle.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/PageReservation.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/VarStyle.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/PageReservation.css">
 </head>
 <body>
 
@@ -42,7 +42,7 @@
 
             <div id="panel-booking" class="panel-content active">
                 <form id="bookingForm" 
-                action="${pageContext.request.contextPath}/GET.vg">
+                action="${pageContext.request.contextPath}/POST.vg">
                     <div class="search-grid">
                         <div class="input-group">
                             <label class="field-label">From</label>
@@ -221,6 +221,6 @@
         </div>
     </div>
 
-    <script src="../js/reservation.js"></script>
+    <script src="${pageContext.request.contextPath}/include/js/reservation.js"></script>
 </body>
 </html>

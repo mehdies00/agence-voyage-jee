@@ -26,7 +26,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class FeedbackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private static final FeedbackDao feedbackDao = new FeedbackDao();	
+	private static final ObjectMapper  mapper = JsonMapper.builder()
+	        .addModule(new JavaTimeModule())
+	        .build();
     /**
      * Default constructor. 
      */
@@ -42,28 +45,12 @@ public class FeedbackServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		String path = request.getServletPath();
 		if(path.equals("/GET.fb")) {
-			FeedbackDao feedbackDao = new FeedbackDao();
 			Collection<Feedback> feedbacks  =  feedbackDao.findAll();
-			
-			ObjectMapper  mapper = JsonMapper.builder()
-			        .addModule(new JavaTimeModule())
-			        .build();
-			String json = mapper.writeValueAsString(feedbacks);
-			
-			response.getWriter().write(json);
+			 mapper.writeValue(response.getWriter(), feedbacks);
 		}else if(path.equals("/POST.fb")) {
-			ObjectMapper  mapper = JsonMapper.builder()
-			        .addModule(new JavaTimeModule())
-			        .build();
-			
-		 
-			
-			FeedbackDao feedbackDao = new FeedbackDao();		
 			Feedback feedback  =  mapper.readValue(request.getReader(), Feedback.class);			
 			feedback = feedbackDao.save(feedback);
-			String json = mapper.writeValueAsString(feedback);
-			
-			response.getWriter().write(json);
+			 mapper.writeValue(response.getWriter(), feedback);
 		}
 	}
 

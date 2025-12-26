@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -29,7 +30,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class VoyageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private static final DestinationDao  destinationDao = new  DestinationDao();
+	private static final VoyageDao voyageDao = new VoyageDao();
+	private static final ObjectMapper  mapper = JsonMapper.builder()
+	        .addModule(new JavaTimeModule())
+	        .build();
     /**
      * Default constructor. 
      */
@@ -41,39 +46,30 @@ public class VoyageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 		String path = request.getServletPath();
-		if(path.equals("/GET.vg")) {
-			DestinationDao  destinationDao = new  DestinationDao();
+		if(path.equals("/POST.vg")) {
 			Collection< Destination>  destinations  = destinationDao.findAll();
-			VoyageDao voyageDao = new VoyageDao();
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			ObjectMapper  mapper = JsonMapper.builder()
-			        .addModule(new JavaTimeModule())
-			        .build();
-			String from = request.getParameter("from");
-			String destination = request.getParameter("destination");
+			String fromStr = request.getParameter("from");
+			String destinationStr = request.getParameter("destination");
 			String departure =  request.getParameter("depart");
 			String Return = request.getParameter("Return");
 			String StrTravelers = request.getParameter("travelers");
 			String typeStr = request.getParameter("type");
-			Destination  fromObj  = new Destination();
-			Destination  destinationObj  = new Destination();
-			for(Destination  place : destinations) {
-				if(place.getTitle().toLowerCase().equals(from.toLowerCase())) {
-					fromObj = place;
-					break;
-				}
-			}
-			
-			for(Destination  place : destinations) {
-				if(place.getTitle().toLowerCase().equals(destination)) {
-					destinationObj = place;
-					break;
-				}
-			}
-			
-			if (fromObj != null && destinationObj !=null) {
+			Optional<Destination> fromOpt = destinationDao.findByStr(fromStr, "title");
+			Optional<Destination> destinationOpt = destinationDao.findByStr(destinationStr, "title");
+			if (!fromOpt.isEmpty() && !destinationOpt.isEmpty()) {
+				Destination fromObj =fromOpt.get();
+				Destination destinationObj =destinationOpt.get();
 				int destinationId = destinationObj.getId();
 				int locationId = fromObj.getId() ;
 				float budget = 0;
@@ -83,7 +79,7 @@ public class VoyageServlet extends HttpServlet {
 				String[] travelers = StrTravelers.split(",");
 				for(String traveler:travelers) {
 					String t = traveler.trim(); 
-  			        int count = Character.getNumericValue(t.charAt(0));
+  			        int count = Integer.parseInt(t.split(" ")[0]);
  			        if (t.contains("Adult")) {
 			            budget += count * 1000.0f;
 			        } else if (t.contains("Child")) {
@@ -99,22 +95,11 @@ public class VoyageServlet extends HttpServlet {
 
 				Voyage voyage = new Voyage(destinationId, locationId, budget, depart, return_date, type, StrTravelers);
 				voyageDao.save(voyage);
-				String json = mapper.writeValueAsString(voyage);
-				response.getWriter().write(json);
-				
+				mapper.writeValue(response.getWriter(),voyage);				
 			}else {
-				
+				mapper.writeValue(response.getWriter(),null);				
 			}
 		
-		};
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		doGet(request, response);
-	}
+		};	}
 
 }

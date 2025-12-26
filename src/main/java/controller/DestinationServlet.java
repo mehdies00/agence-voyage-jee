@@ -20,6 +20,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class DestinationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final DestinationDao  destinationDao = new  DestinationDao();
+	private static final  ObjectMapper  mapper = new ObjectMapper();
 
     /**
      * Default constructor. 
@@ -32,17 +34,13 @@ public class DestinationServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 		String path = request.getServletPath();
 		if(path.equals("/GET.dt")) {
-			DestinationDao  destinationDao = new  DestinationDao();
 			Collection< Destination>  destinations  = destinationDao.findAll();
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			ObjectMapper  mapper = new ObjectMapper();
-			String json = mapper.writeValueAsString(destinations);
-			response.getWriter().write(json);
-			
-		};
+			mapper.writeValue(response.getWriter(), destinations);
+ 		};
 	}
 
 	/**
