@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerCard = document.getElementById('registerCard');
     const showRegisterBtn = document.getElementById('showRegister');
     const showLoginBtn = document.getElementById('showLogin');
-/*
+	const googleBtn = document.getElementById('googleBtn');
+	    const facebookBtn = document.getElementById('facebookBtn');
+	/*
     if (showRegisterBtn) {
         showRegisterBtn.addEventListener('click', () => {
             loginCard.classList.add('hidden');
@@ -151,4 +153,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function isEmailValid(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
+	// Dans ton fichier form.js
+	if (googleBtn) {
+	        googleBtn.addEventListener('click', () => {
+	            // Redirection vers la servlet SocialLogin
+	            window.location.href = '${pageContext.request.contextPath}/SocialLogin.lg';
+ 	        });
+	    }
+
+	    if (facebookBtn) {
+	        facebookBtn.addEventListener('click', () => {
+	            window.location.href = '${pageContext.request.contextPath}/SocialLogin.lg';
+ 
+			});
+	    }
 });

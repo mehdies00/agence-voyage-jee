@@ -60,17 +60,30 @@ function openOffer(title, sub, price, img) {
 }
 
 function showBookingForm(offerName) {
-    document.getElementById('modalBody').innerHTML = `
-        <div style="text-align: left;">
-            <h3 style="margin-bottom: 15px;">Reserve Your Spot</h3>
-            <form onsubmit="handleBookingSubmit(event)">
-                <input type="text" class="form-input" value="${offerName}" readonly style="background: #f8f9fa; margin-bottom: 10px;">
-                <input type="text" id="custName" class="form-input" placeholder="Full Name" required style="margin-bottom: 10px;">
-                <input type="email" id="custEmail" class="form-input" placeholder="Email" required style="margin-bottom: 20px;">
-                <button type="submit" class="search-btn">Confirm Booking</button>
-            </form>
-        </div>
-    `;
+    // 1. Fermer la modale
+    closeModal();
+
+    // 2. Remplir le champ destination du formulaire principal
+    const destInput = document.getElementById('destination');
+	const origin = document.getElementById('origin');
+	
+	if (destInput) {
+        destInput.value = offerName;
+		origin.value = " ";
+
+        // Petit effet visuel pour montrer que le champ est rempli
+        destInput.style.border = "2px solid var(--accent-purple)";
+        setTimeout(() => destInput.style.border = "", 2000);
+    }
+
+    // 3. Basculer l'onglet vers "Book a Trip" (panel-booking)
+    const bookingTab = document.querySelector('.tab-btn[onclick*="booking"]');
+    switchPanel('booking', bookingTab);
+
+    // 4. Scroll fluide vers le formulaire principal
+    document.querySelector('.widget-container').scrollIntoView({ 
+        behavior: 'smooth' 
+    });
 }
 
 function handleBookingSubmit(e) {
