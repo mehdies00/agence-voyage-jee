@@ -1,5 +1,33 @@
 const counts = { adults: 1, children: 0, babies: 0 };
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. On récupère les paramètres de l'URL
+    const params = new URLSearchParams(window.location.search);
+    const dest = params.get('dest');   // Ville
+    const price = params.get('price'); // Prix
+    const title = params.get('title'); // Nom de l'hôtel/offre
 
+    if (dest || title) {
+        // 2. Remplissage automatique du champ Destination
+        const destInput = document.getElementById('destination');
+        if (destInput) {
+            destInput.value = dest ? decodeURIComponent(dest) : decodeURIComponent(title);
+            
+            // Animation visuelle pour montrer le remplissage
+            destInput.style.borderColor = "var(--accent-purple)";
+            destInput.parentElement.classList.add('pulse-effect');
+        }
+
+        // 3. Basculement automatique sur l'onglet "Book a Trip"
+        const bookingTab = document.querySelector('.tab-btn[onclick*="booking"]');
+        if (bookingTab) {
+            switchPanel('booking', bookingTab);
+        }
+        
+        // 4. (Optionnel) Vider le champ "From" pour forcer l'utilisateur à choisir son départ
+        const originInput = document.getElementById('origin');
+        if (originInput) originInput.value = "";
+    }
+});
 function switchPanel(panelId, clickedTab) {
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     clickedTab.classList.add('active');
@@ -28,7 +56,10 @@ function updateInputText() {
     if (counts.children > 0) parts.push(`${counts.children} Child${counts.children > 1 ? 'ren' : ''}`);
     if (counts.babies > 0) parts.push(`${counts.babies} Infant${counts.babies > 1 ? 's' : ''}`);
     document.getElementById('travelerInput').value = parts.join(', ');
-}
+	document.getElementById('hiddenAdults').value = counts.adults;
+	    document.getElementById('hiddenChildren').value = counts.children;
+	    document.getElementById('hiddenBabies').value = counts.babies;
+	}
 
 function swapFields() {
     const origin = document.getElementById('origin');
