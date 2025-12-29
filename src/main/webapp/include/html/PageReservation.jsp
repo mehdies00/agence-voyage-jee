@@ -141,6 +141,10 @@
                             <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </div>
+                    <input type="hidden" name="nbAdults" id="hiddenAdults" value="1">
+                    <input type="hidden" name="nbChildren" id="hiddenChildren" value="0">
+					<input type="hidden" name="nbBabies" id="hiddenBabies" value="0">
+					<input type="hidden" name="offerPrice" id="hiddenOfferPrice">
                 </form>
             </div>
 
