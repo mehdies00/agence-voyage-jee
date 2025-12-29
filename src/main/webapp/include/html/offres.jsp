@@ -1,24 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Exclusive Offers - Evasion Agency</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+      <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/VarStyle.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/css/offres.css">
     
-    <link rel="stylesheet" href="../css/offres.css">
 </head>
 <body>
-   <jsp:include page="header.jsp"></jsp:include>
-
-
+    <jsp:include page="header.jsp"></jsp:include>
 
     <main class="offres-section">
         <header class="offres-header">
@@ -27,10 +26,9 @@
         </header>
 
         <div class="offres-container" id="offers-grid">
-            </div>
+        </div>
     </main>
 
     <script src="../js/offre.js"></script>
-    
 </body>
 </html>

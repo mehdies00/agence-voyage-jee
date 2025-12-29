@@ -16,12 +16,33 @@ const offersData = [
     { id: 10, title: "Kyoto Traditions", city: "Tokyo", country: "Japan", desc: "Excursion to Kyoto's temples and Zen gardens via the Shinkansen bullet train.", oldPrice: "1400", newPrice: "1100", img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e", tag: "Zen" }
 ];
 
+const search = document.querySelector('.navbar__search-input');
+
+search.addEventListener('input', () => {
+    renderOffers();
+});
 
 function renderOffers() {
     const grid = document.getElementById('offers-grid');
     if (!grid) return;
 
-    const htmlContent = offersData.map(offer => `
+    const searchValue = search.value.toLowerCase();
+
+    const filteredOffers = offersData.filter(offer => {
+        const searchWord = (
+            offer.title +
+            offer.city +
+            offer.country +
+            offer.desc +
+            offer.oldPrice +
+            offer.newPrice +
+            offer.tag
+        ).toLowerCase();
+
+        return searchWord.includes(searchValue);
+    });
+
+    const htmlContent = filteredOffers.map(offer => `
         <article class="card-offer">
             <div class="card-offer__img-side" style="background-image: url('${offer.img}?auto=format&fit=crop&w=800&q=80');">
                 <span class="badge-promo">${offer.tag}</span>
@@ -43,7 +64,10 @@ function renderOffers() {
                         <span class="old-price">${offer.oldPrice} €</span>
                         <span class="new-price">${offer.newPrice} €</span>
                     </div>
-                    <a href="reservation.jsp?title=${encodeURIComponent(offer.title)}&price=${offer.newPrice}" class="hero__btn--orange">Book Now</a>
+                    <a href="PageReservation.jsp?dest=${encodeURIComponent(offer.city)}&title=${encodeURIComponent(offer.title)}&price=${offer.newPrice}" 
+                       class="hero__btn--orange">
+                       Book Now
+                    </a>
                 </div>
             </div>
         </article>
@@ -51,6 +75,5 @@ function renderOffers() {
 
     grid.innerHTML = htmlContent;
 }
-
 
 document.addEventListener('DOMContentLoaded', renderOffers);

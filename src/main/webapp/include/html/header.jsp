@@ -8,7 +8,7 @@
     <div class="navbar-container">
 
         <div class="navbar__start">
-            <a href="index.jsp" class="navbar__logo">logo</a>
+            <a href="index.jsp" class="navbar__logo">Evasion Agency</a>
             <ul class="navbar__menu">
                 <li class="navbar__list">
                     <a href="index.jsp" class="navbar__link">Home</a>
@@ -29,7 +29,7 @@
                 <% if (user != null) { %>
                     <div class="navbar__user-profile">
                         <span class="user-name">Hello, <strong><%= user.getName() %></strong></span>
-<a href="${pageContext.request.contextPath}/Logout.lg" class="button button--logout">Logout</a>                    </div>
+					<a href="${pageContext.request.contextPath}/Logout.lg" class="button button--logout">Logout</a>                    </div>
                 <% } else { %>
                     <a href="./LoginForm.jsp" class="button button--login">Log in</a>
                     <a href="./SigInForm.jsp" class="button button--signup">Sign Up</a>
